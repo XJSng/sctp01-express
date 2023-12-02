@@ -28,10 +28,18 @@ app.get("/add-food", function (req, res){
 // We want to add a route for POST /add-food
 app.post("/add-food", function (req, res){
     // There is a shorter way of doing this form extraction
-    const {foodName,calories} = req.body;
+    const {foodName,calories, meal, cuisine} = req.body;
+    // check if radio button
+    if (!meal) {
+        res.send("No meal selected")
+    return
+    }
+    
     res.render("food-summary", {
         foodName,
-        calories
+        calories,
+        meal,
+        cuisine
     })
 
     // const foodName = req.body.foodName
