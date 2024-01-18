@@ -1,0 +1,20 @@
+{{#extends "base"}}
+{{#block "title"}}
+Fruit Pricing
+{{/block}}
+{{#block "content"}}
+<h1>Fruit Pricing</h1>
+<form method="POST">
+        <div>
+        <input type="checkbox" name="items" value="durain"><label>Durian</label>
+        <input type="checkbox" name="items" value="apple"><label>Apple</label>
+        <input type="checkbox" name="items" value="orange"><label>Orange</label>
+        <input type="checkbox" name="items" value="banana"><label>Banana</label>
+    </div>
+    <div>
+        <input type="submit" class="btn btn-primary" value="Get Pricing" />
+    </div>
+</form>
+{{/block}}
+
+{{/extends}}
