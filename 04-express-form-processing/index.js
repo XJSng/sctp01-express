@@ -60,13 +60,25 @@ app.post("/add-food", (req, res)=>{
     foodName,
     calories,
     tags: tags.join(", ")
-
+})
 })
 
-
+// Hands On A (calculate_bmi)
+app.get("/calculate-bmi", (req, res)=>{
+   res.render("calculate-bmi")
 })
 
-
+app.post("/calculate-bmi", (req, res)=>{
+    const weight = parseInt(req.body.weight)
+    const height = parseFloat(req.body.height)
+    function calculateBmi(weight, height){
+        heightInMeters = height/100
+        let calculatedBmi = weight/(heightInMeters*heightInMeters)
+        return calculatedBmi
+    }
+    const calculatedBmi = calculateBmi(weight, height)
+    res.send(`Your BMI is ${calculatedBmi.toFixed(2)}`)
+})
 
 
 // Server started
