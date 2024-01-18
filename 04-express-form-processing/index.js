@@ -108,6 +108,34 @@ app.post("/fruits", (req, res) => {
     res.send(`Total cost of ${selectedFruits.join(", ")} = $${total}`)
 })
 
+
+// Hands On C (Lost and Found)
+app.get("/lost-and-found", (req, res)=>{
+    res.render("lost_and_found")
+})
+
+app.post("/lost-and-found", (req,res)=> {
+    const { itemName, email, lastLocation, itemProperty } = req.body;
+    try{
+        if (itemName.length < 3) {
+            res.send(`Sorry ${itemName} is less than 3 character`)
+        } else if (itemName.length > 199) {
+            res.send(`Sorry your item name has more than 200 characters`)
+        } else if (!email.includes("@") && !email.includes(".")) {
+            res.send(`Sorry your email needs at lease a @ or .`)
+        }
+        
+    } catch {
+
+    }
+    
+    res.render("lost_found_report", {
+        itemName, email, lastLocation, itemProperty
+    })
+    
+})
+
+
 // Server started
 app.listen(4000, () => {
     console.log(`Server has started`)

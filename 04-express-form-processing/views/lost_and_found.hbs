@@ -1,0 +1,71 @@
+{{#extends "base"}}
+{{#block "title"}}
+Lost and Found
+{{/block}}
+{{#block "content"}}
+<h1>Lost &amp; Found Reporting Form</h1>
+<form method="POST">
+    <div>
+        <label class="form-label">Name of item:</label>
+        <input type="text" class="form-control" name="itemName"/>
+    </div>
+    <div>
+        <label class="form-label">Your Email Address</label>
+        <input type="text" class="form-control" name="email"/>
+    </div>
+    <div>
+        <label class="form-label mt-3">Last seen location:</label>
+         <div class="form-check form-check-inline">
+            <div class="ml-3">
+                <input class="form-check-input" type="radio" id="taxi" name="lastLocation" value="taxi">
+                <label class="form-check-label" for="taxi">Taxi</label>
+         </div>
+         <div class="ml-3">
+                <input class="form-check-input" type="radio" id="bus" name="lastLocation" value="bus">
+                <label class="form-check-label" for="bus">Bus</label>
+         </div>
+         <div class="ml-3">
+                <input class="form-check-input" type="radio" id="mrt" name="lastLocation" value="mrt">
+                <label class="form-check-label" for="mrt">MRT</label>
+         </div>
+         <div class="ml-3">
+                <input class="form-check-input" type="radio" id="others" name="lastLocation" value="others">
+                <label class="form-check-label" for="mrt">Others</label>
+         </div>
+    </div>
+    <div>
+        <label class="form-label mt-3">Properties of lost item:</label>
+        <div class="form-check form-check-inline">
+            <div class="ml-3">
+                <input class="form-check-input" type="checkbox" id="bulky" name="itemProperty" value="bulky">
+                <label class="form-check-label" for="bulky">Bulky</label>
+            </div>
+            <div class="ml-3">
+                <input class="form-check-input" type="checkbox" id="expensive" name="itemProperty" value="expensive">
+                <label class="form-check-label" for="expensive">Expensive</label>
+            </div>
+            <div class="ml-3">
+                <input class="form-check-input" type="checkbox" id="colorful" name="itemProperty" value="colorful">
+                <label class="form-check-label" for="colorful">Colorful</label>
+            </div>
+            <div class="ml-3">
+                <input class="form-check-input" type="checkbox" id="branded" name="itemProperty" value="branded">
+                <label class="form-check-label" for="branded">Branded</label>
+            </div>
+            <div class="ml-3">
+                <input class="form-check-input" type="checkbox" id="small" name="itemProperty" value="small">
+                <label class="form-check-label" for="small">Small</label>
+            </div>
+            <div class="ml-3">
+                <input class="form-check-input" type="checkbox" id="plain" name="itemProperty" value="plain">
+                <label class="form-check-label" for="plain">Plain</label>
+            </div>
+        </div>
+    </div>
+    <div>
+        <input type="submit" class="btn btn-primary mt-3" value="Please find my item"/>
+    </div>
+</form>
+{{/block}}
+
+{{/extends}}
