@@ -1,12 +1,13 @@
 const express = require('express')
 // STEP 1: Adding Handlebars  
 const hbs = require('hbs')
-
 const app = express()
 
 // STEP 2: SETUP VIEW ENGINE, let express know to use hbs
 app.set('view engine', 'hbs')
 
+// Step 3: SETUP STATIC FOLDER
+app.use(express.static('public'))
 
 // Add routes here
 // How to grab the parameters 
