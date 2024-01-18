@@ -37,3 +37,8 @@ Template inheritance allows one to build a base 'skeleton' template that contain
 ### Handlebar helpers
 
 Handlebar helpers replicate the effects of conditional statements and loops in express. By using the `this` keyword we are able to combination of cycling through an array.
+
+---
+### Form Processing
+1. Enable forms by adding this line of code `app.use(express.urlencoded({extended:false}))` 
+2. Create the form under `add_food.hbs` and populate it
