@@ -34,4 +34,6 @@ Template inheritance allows one to build a base 'skeleton' template that contain
 6. Redo the index.hbs files with {{#extends "base"}} {{#block "content"}} Your content {{/block}} {{/extends}}
 
 ---
-### 
+### Handlebar helpers
+
+Handlebar helpers replicate the effects of conditional statements and loops in express. By using the `this` keyword we are able to combination of cycling through an array.
