@@ -1,0 +1,20 @@
+{{#extends "base"}}
+{{#block "title"}}
+ Fruits
+{{/block}}
+
+{{#block "content"}}
+<h3 class="mt-3">This page is created with the help of handlebar helpers</h3>
+<ul>
+{{#each fruits}}
+<li>{{this}}</li>
+{{/each}}
+</ul>
+{{#ifEquals favouriteFruit "banana"}}
+    <p>Your favourite fruit is {{favouriteFruit}}, so you will keep the doctors away.</p>
+{{else}}
+<p>Your favourite fruit is {{favouriteFruit}}, please eat more apples.</p>
+{{/ifEquals}}
+{{/block}}
+
+{{/extends}}

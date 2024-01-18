@@ -16,13 +16,26 @@ app.use(express.static('public'))
 wax.on(hbs.handlebars)
 wax.setLayoutPath("./views/layouts")
 
+//Creating our own handlebar helper, if arg1 is equals to arg2, options.fn(this) will execute if not options.inverse(this) will execute
+hbs.handlebars.registerHelper("ifEquals", function(arg1, arg2, options) {
+    return (arg1 == arg2) ? options.fn(this) : options.inverse(this);
+})
+
 // Add routes here
 // How to grab the parameters 
 app.get('/hello/:name', (req, res)=>{
 let name = req.params.name;
 // res = response   
 res.send(`Hi, ${name}`)
+})
 
+// the fruits route to showcase handlebar helpers
+app.get("/fruits", (req,res)=> {
+    let favourite = "apples" // variable we can change to trigger the right response
+        res.render("fruits", {
+        "fruits": ["apples", "bananas", "oranges"],
+        "favouriteFruit": favourite
+    })
 })
 
 // Lab 3 - HBS
@@ -32,6 +45,6 @@ app.get('/', (req, res)=>{
 
 
 // Server started
-app.listen(3000, ()=>{
+app.listen(4000, ()=>{
     console.log(`Server has started`)
 })
