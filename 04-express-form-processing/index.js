@@ -115,15 +115,32 @@ app.get("/lost-and-found", (req, res)=>{
 })
 
 app.post("/lost-and-found", (req,res)=> {
-    const { itemName, email, lastLocation, itemProperty } = req.body;
+    const itemName = req.body.itemName
+    const email = req.body.email
+    const lastLocation = req.body.lastLocation
+    const itemProperty = req.body.itemProperty 
+    console.log(itemProperty.length)
     try{
         if (itemName.length < 3) {
             res.send(`Sorry ${itemName} is less than 3 character`)
         } else if (itemName.length > 199) {
             res.send(`Sorry your item name has more than 200 characters`)
-        } else if (!email.includes("@") && !email.includes(".")) {
-            res.send(`Sorry your email needs at lease a @ or .`)
+        }  
+        
+        if (!email.includes("@")) {
+            res.send(`Sorry your email needs a @`)
+        } else if (!email.includes(".")) {
+            res.send(`Sorry your email needs a .`)
         }
+        
+        let itemPropertyList = []
+        
+        if (itemProperty.length < 3) {
+            res.send(`Sorry your item properties needs to be less than 3.`)
+        } else if (itemProperty.length === undefined){
+            res.send(`Sorry your item properties needs to be more than 1`) 
+        }
+        //
         
     } catch {
 
