@@ -1,0 +1,45 @@
+{{#extends "base"}}
+{{#block "title"}}
+Create Equipment
+{{/block}}
+
+
+{{#block "content"}}
+ <h2 class="mt-3">Create A New Equipment</h2>
+ <form method="POST">
+        <div>
+            <label class="form-label">Equipment Name</label>
+            <input type='text' class="form-control" name="equipmentName" placeholder="A7Siii"/>
+        </div>
+        <div>
+            <label class="form-label">Category</label>
+            <input type='date' class="form-control" name="dateOfPurchase" placeholder="DD/MM/YYYY"/> 
+        </div>
+         <div>
+            <label class="form-label">Equipment Type:</label>
+  <label>
+        <input type="radio" name="equipmentType" value="fullFrameMirrorless" checked>
+        Full Frame Mirrorless Camera
+    </label>
+ <label>
+        <input type="radio" name="equipmentType" value="fullFrameMirrorlessLens" checked>
+        Full Frame Mirrorless Lens
+    </label>
+        </div>
+              <div>
+            <label class="form-label">Model No.</label>
+            <input type='text' class="form-control" name="ModelNumber" placeholder="SONY ILCE-7SM3"/>
+        </div>
+         <div>
+            <label class="form-label">General Remarks</label>
+            <input type='text' class="form-control" name="generalRemarks" placeholder="Works like a charm"/>
+        </div>
+        <div>
+            <label class="form-label">Service Status</label>
+            <input type='text' class="form-control" name="serviceStatus" placeholder="Servicing in Progress"/>
+        </div>
+        <input type="submit" class="btn btn-primary mt-3" value="Create New Equipment"/>
+    </form>
+{{/block}}
+
+{{/extends}}

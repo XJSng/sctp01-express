@@ -1,0 +1,39 @@
+{{#extends "base"}}
+
+
+{{#block "title"}}
+FMC Equipment List
+{{/block}}
+
+
+{{#block "content"}}
+<a href="/equipment/create" class="btn btn-primary m-3">Add New Equipment</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Date of Purchase</th>
+            <th>Equipment Type</th>
+            <th>Model No.</th>
+            <th>General Remarks</th>
+            <th>Service Status</th>
+            <th></th>
+        </tr>
+    </thead>
+    {{#each all_equipment}}
+    <tr>
+        <td>{{this._id}}</td>
+        <td>{{this.name}}</td>
+        <td>{{this.date-of-purchase}}</td>
+        <td>{{this.equipment-type}}</td>
+        <td>{{this.model-number}}</td>
+        <td>{{this.general-remarks}}</td>
+        <td>{{this.service}}</td>
+        <td><a href="/equipment/{{this.id}}/update" class="btn btn-secondary btn-xs">Edit</a>
+    </tr>
+    {{/each}}
+</table>
+{{/block}}
+
+{{/extends}}

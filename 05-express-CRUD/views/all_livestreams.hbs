@@ -1,0 +1,35 @@
+{{#extends "base"}}
+
+
+{{#block "title"}}
+FMC Livesteam Services
+{{/block}}
+
+
+{{#block "content"}}
+<a href="/livestream-services/create" class="btn btn-primary m-3">Add New Livestream Session</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Livesteam Date</th>
+            <th>Volunteers</th>
+            <th>Director</th>
+            <th>Equipment</th>
+            <th></th>
+        </tr>
+    </thead>
+    {{#each all_livestreams}}
+    <tr>
+        <td>{{this._id}}</td>
+        <td>{{this.livestream-date}}</td>
+        <td>{{this.volunteers-involved}}</td>
+        <td>{{this.director}}</td>
+        <td>{{this.equipment}}</td>
+        <td><a href="/livestream-services/{{this.id}}/update" class="btn btn-secondary btn-xs">Edit</a>
+    </tr>
+    {{/each}}
+</table>
+{{/block}}
+
+{{/extends}}
