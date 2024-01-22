@@ -1,0 +1,38 @@
+{{#extends "base"}}
+
+
+{{#block "title"}}
+Volunteer List
+{{/block}}
+
+
+{{#block "content"}}
+<a href="/volunteers/create" class="btn btn-primary m-3">Add New Equipment</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Date of Birth</th>
+            <th>Email</th>
+            <th>Phone No.</th>
+            <th>Last Used Equipment</th>
+         
+            <th></th>
+        </tr>
+    </thead>
+    {{#each all_volunteers}}
+    <tr>
+        <td>{{this._id}}</td>
+        <td>{{this.name}}</td>
+        <td>{{this.dob}}</td>
+        <td>{{this.email}}</td>
+        <td>{{this.phone-number}}</td>
+        <td>{{this.last-used-equipment}}</td>
+        <td><a href="/volunteers/{{this._id}}/update" class="btn btn-secondary btn-xs">Edit</a>
+    </tr>
+    {{/each}}
+</table>
+{{/block}}
+
+{{/extends}}

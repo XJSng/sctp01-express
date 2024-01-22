@@ -1,0 +1,45 @@
+{{#extends "base"}}
+{{#block "title"}}
+Update Equipment
+{{/block}}
+
+
+{{#block "content"}}
+<h2 class="mt-3">Update {{all_equipment.name}}</h2>
+<form method="POST">
+    <div>
+        <label class="form-label">Equipment Name</label>
+        <input type='text' class="form-control" name="equipmentName" value="{{all_equipment.name}}"/>
+    </div>
+    <div>
+        <label class="form-label">Category</label>
+        <input type='date' class="form-control" name="dateOfPurchase" value="{{all_equipment.date-of-purchase}}"/>
+    </div>
+    <div>
+        <label class="form-label">Equipment Type:</label>
+        <label>
+            <input type="radio" name="equipmentType" value="fullFrameMirrorless" {{#if all_equipment.equipmentType}}checked{{/if}}>
+            Full Frame Mirrorless Camera
+        </label>
+        <label>
+            <input type="radio" name="equipmentType" value="fullFrameMirrorlessLens" {{#if all_equipment.equipmentType}}checked{{/if}}>
+            Full Frame Mirrorless Lens
+        </label>
+    </div>
+    <div>
+        <label class="form-label">Model No.</label>
+        <input type='text' class="form-control" name="modelNumber" value="{{all_equipment.modelNumber}}" />
+    </div>
+    <div>
+        <label class="form-label">General Remarks</label>
+        <input type='text' class="form-control" name="generalRemarks" value="{{all_equipment.generalRemarks}}" />
+    </div>
+    <div>
+        <label class="form-label">Service Status</label>
+        <input type='text' class="form-control" name="serviceStatus" value="{{all_equipment.serviceStatus}}" />
+    </div>
+    <input type="submit" class="btn btn-primary mt-3" value="Create New Equipment" />
+</form>
+{{/block}}
+
+{{/extends}}
