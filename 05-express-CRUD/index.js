@@ -12,6 +12,7 @@ app.use(cors())
 app.set('view engine',' hbs')
 app.use(express.static('public'))
 app.use(express.urlencoded({extended:false}));
+app.use(express.json()); // use json
 
 wax.on(hbs.handlebars)
 wax.setLayoutPath('./views/layouts')
@@ -54,27 +55,29 @@ async function main() {
     
     app.post("/equipment/create", async (req, res)=>{
         let equipmentName  = req.body.equipmentName
-             dateOfPurchase = req.body.dateOfPurchase
-             equipmentType = req.body.equipmentType
-             modelNumber = req.body.modelNumber
-             generalRemarks = req.body.generalRemarks
-             serviceStatus = req.body.serviceStatus
+        let dateOfPurchase = req.body.dateOfPurchase
+        let equipmentType = req.body.equipmentType
+        let modelNumber = req.body.modelNumber
+        let generalRemarks = req.body.generalRemarks
+        let serviceStatus = [req.body.serviceStatus]
     
      let data = {
         "name": equipmentName,
-        "date-of-purchase": dateOfPurchase,
-        "equipment-type":equipmentType,
-        "model-number": modelNumber,
-        "general-remarks":generalRemarks,
+        "dateOfPurchase": dateOfPurchase,
+        "equipmentType":equipmentType,
+        "modelNumber": modelNumber,
+        "generalRemarks":generalRemarks,
         "service": serviceStatus 
      }
         let result = await db.collection('equipment_list').insertOne(data)
-        res.status(201).json(result)
+        
+        res.redirect("/equipment")
     })
     
     //UPDATE ROUTE
-    app.get('/equipment/:equipment_id', async(req,res)=>{ 
-        const _id = req.params.equipment_id
+    app.get('/equipment/:equipment_id/update', async(req,res)=>{ 
+        const _id = new ObjectId(req.params.equipment_id)
+
         const equipment = await db.collection('equipment_list').findOne({_id:_id})
         console.log(equipment)
         res.render('edit_equipment.hbs', {
@@ -82,8 +85,23 @@ async function main() {
         })
     })
     
-    
-    
+    // DELETE ROUTE
+    app.get("/equipment/:equipmentId/delete", async(req, res)=>{
+        const _id = req.params.equipmentId
+        const equipment = await db.collection("equipment_list").findOne({
+            "_id": new ObjectId(_id) })    
+        res.render("delete_equipment.hbs", {
+            "equipment":equipment
+        })
+    })
+        
+    app.post("/equipment/:equipment_id/delete", async(req, res)=>{
+        const _id = req.params.equipmentId
+        const results = await db.collection('equipment_list').deleteOne({"_id": new ObjectId(_id)})
+            res.json({
+                "message": "Equipment successfully deleted"
+        })
+        })
     }
 
 //ROUTES END
